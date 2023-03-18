@@ -55,25 +55,27 @@ function startObserving() {
       noteText = noteText.replace(emojiRegex, "");
       //noteText=noteText.substring(0,140)
 
-      // 出だしの10文字（10文字もない場合は全文）が同じ場合は読み上げない（スキップさせる）
-      var beginText;
-      if (noteText.length < 10) {beginText = noteText } else {
+      //除外した結果文字なかったらスキップ
+      if (noteText.length != 0){
+        // 出だしの10文字（10文字もない場合は全文）が同じ場合は読み上げない（スキップさせる）
+        var beginText;
+        if (noteText.length < 10) { beginText = noteText } else {
 
-        beginText = noteText.substring(0, 10);
+          beginText = noteText.substring(0, 10);
+        }
+        if (preText != null && beginText == preText.substring(0, 10)) {
+
+        } else {
+          preText = beginText;
+
+          var userNameElement = document.querySelector(".block.shrink-0.overflow-hidden.border-b.p-1 .author-name"); //.frex .min-w-0");// .flex .author .author-name");
+          if (userNameElement == null) { console.log("naiyo~") }
+          var userName = userNameElement.textContent;
+          //  preText = noteText;//document.querySelector(".block.shrink-0.overflow-hidden.border-b.p-1 .content").innerText.substr(0, 140);
+          utterance.text = userName + " さんの投稿。 " + noteText;
+          window.speechSynthesis.speak(utterance);
+        }
       }
-      if (preText != null && beginText == preText.substring(0, 10)) {
-        
-      }else{
-      preText = beginText;
-
-      var userNameElement = document.querySelector(".block.shrink-0.overflow-hidden.border-b.p-1 .author-name"); //.frex .min-w-0");// .flex .author .author-name");
-      if (userNameElement == null) { console.log("naiyo~") }
-      var userName = userNameElement.textContent;
-      //  preText = noteText;//document.querySelector(".block.shrink-0.overflow-hidden.border-b.p-1 .content").innerText.substr(0, 140);
-      utterance.text = userName + " さんの投稿。 " + noteText;
-      window.speechSynthesis.speak(utterance);
-      }
-
     }
   });
 
