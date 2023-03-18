@@ -48,7 +48,7 @@ function startObserving() {
         noteText = noteText.replace(/(https?:\/\/\S+)/g, "URL省略");
 
       // 記号部分を削除する
-      noteText = noteText.replace(/[!-\/-@[-`{-~.・]/g, "");
+      noteText = noteText.replace(/[!-\/-@[-`{-~.・―]/g, "");
 
       // 絵文字を読み上げ対象から除外する
       var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
