@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Nostr Auto Reader",
+  "version": "1.0",
+  "description": "Automatically read new posts on Nostr",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://syusui-s.github.io/rabbit/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
