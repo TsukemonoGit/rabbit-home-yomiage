@@ -6,7 +6,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://syusui-s.github.io/rabbit/*"
+        "https://syusui-s.github.io/rabbit/*",
+        "https://rabbit.syusui.net/*"
       ],
       "js": [
         "content.js"
